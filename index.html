@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load Charts and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Draw the pie chart for Sarah's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawPopChart);
+
+      // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawFatalityChart);
+
+      // Callback that draws the pie chart for Sarah's pizza.
+      function drawPopChart() {
+
+        // Create the data table for Sarah's pizza.
+        var data = google.visualization.arrayToDataTable([
+          ['Pandemic', 'Cases per Population'],
+          ['Swine',  .88],
+          ['Chlorea', .003],
+          ['Span Flu',  27],
+          ['SARS', .0001],
+          ['COVID-19',  0.37]
+        ]);
+
+        // Set options for Sarah's pie chart.
+        var options = {title:'COVID-19 Cases in Relation to Population Compared to that of Other Pandemics',
+                       width:400,
+                       height:300,
+                      is3D: true};
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Population_div'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Anthony's pizza.
+      function drawFatalityChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Pandemic', 'Fatality among Cases (by %)'],
+          ['Swine',     .0205],
+          ['Chlorea',     10],
+          ['Span Flu', 10],
+          ['SARS', 10],
+          ['COVID-19',  8.22]
+        ]);
+
+
+        // Set options for Anthony's pie chart.
+        var options = {title:'Fatality of COVID-19 Compared to that of Other Historical Pandemics (by percentage)',
+                       width:400,
+                       height:300,
+                      is3D: true};
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('Fatality_div'));
+        chart.draw(data, options);
+      }
+    </script>
+  </head>
+  <body>
+    <!--Table and divs that hold the pie charts-->
+    <table class="columns">
+      <tr>
+        <td><div id="Population_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="Fatality_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+  </body>
+</html>
+
